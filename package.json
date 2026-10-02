@@ -1,14 +1,24 @@
 {
-  "name": "gha",
+  "name": "github-actions",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "dev": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alokkumar28/github-actions.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/alokkumar28/github-actions/issues"
+  },
+  "homepage": "https://github.com/alokkumar28/github-actions#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }

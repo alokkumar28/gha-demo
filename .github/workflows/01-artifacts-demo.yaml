@@ -26,10 +26,26 @@ jobs:
             --name my-app-container \
             my-app:v1.0.1
 
+      - name: Check Container Status
+        run: |
+          sleep 3
+          docker ps -a
+          echo "===== Container Logs ====="
+          docker logs my-app-container
+
       - name: Generate Smoke Test Report
         run: |
-          sleep 5
-          curl -f http://localhost:5000 >> smoke-test-report.txt
+          for i in {1..10}; do
+            if curl -f http://localhost:5000; then
+              echo "Application is ready!"
+              break
+            fi
+
+            echo "Waiting for application..."
+            sleep 2
+          done
+
+          curl -f http://localhost:5000 > smoke-test-report.txt
           curl -f http://localhost:5000/health >> smoke-test-report.txt
 
       - name: Export Container Logs
